@@ -2,7 +2,7 @@ using System;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using Shoptab1;
+using ShopTab1;
 
 namespace ShopTab1;
 
@@ -27,31 +27,41 @@ public partial class RedWindow : Window
         }
     }
 
+    
+
     private void AddItem(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        
-        var button = (sender as Button)!;
-        switch (button.Name)
+        try
         {
-            case "btn_Add":
-                {
-                    if (_selectedProduct == null)
+            var button = (sender as Button)!;
+            switch (button.Name)
+            {
+                case "btn_Add":
                     {
-                        ProdsSttc._LBoxItems.Add(new Product(TBox_Name.Text, Convert.ToDouble(NUD_Price.Text), Convert.ToInt32(NUD_Count.Text), ProdsSttc._LBoxItems.Count));
+                        if (_selectedProduct == null)
+                        {
+                            ProdsSttc._LBoxItems.Add(new Product(TBox_Name.Text, Convert.ToDouble(NUD_Price.Text), Convert.ToInt32(NUD_Count.Text), ProdsSttc._LBoxItems.Count));
+                        }
+                        else
+                        {
+                            _selectedProduct.Name = TBox_Name.Text;
+                            _selectedProduct.Price = Convert.ToDouble(NUD_Price.Text);
+                            _selectedProduct.Quantity = Convert.ToInt32(NUD_Count.Text);
+                            ProdsSttc._LBoxItems[_selectedProduct.Id] = _selectedProduct;
+                            _selectedProduct = null;
+                        }
                     }
-                    else
-                    {
-                        _selectedProduct.Name = TBox_Name.Text;
-                        _selectedProduct.Price = Convert.ToDouble(NUD_Price.Text);
-                        _selectedProduct.Quantity = Convert.ToInt32(NUD_Count.Text);
-                        ProdsSttc._LBoxItems[_selectedProduct.Id] = _selectedProduct;
-                        _selectedProduct = null;
-                    }
-                }
-                break;
+                    break;
+            }
+            ListWindow listWindow = new ListWindow();
+            listWindow.Show();
+            this.Close();
+        } 
+        catch 
+        {
+            ListWindow listWindow = new ListWindow();
+            listWindow.Show();
+            this.Close();
         }
-        ListWindow listWindow = new ListWindow();
-        listWindow.Show();
-        this.Close();
     }
 }

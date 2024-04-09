@@ -24,19 +24,18 @@ public partial class MainWindow : Window
                 {
                     if (TBox_Password.Text == user.Password)
                     {
-                        ListWindow listWindow = new ListWindow();
+                        ListWindow listWindow = new();
                         listWindow.Show();
                         this.Close();
                     }
-                    else
-                    {
-                        PasswordIncorrect.IsVisible = true;
-                    }
+                    PasswordIncorrect.IsVisible = TBox_Login.Text == user.Password ? false : true;
                 }
-                LoginIncorrect.IsVisible = true;
+                LoginIncorrect.IsVisible = TBox_Login.Text == user.Name ? false : true;
+                PasswordIncorrect.IsVisible = TBox_Login.Text == user.Password ? false : true;
             }
         }
-        LoginIncorrect.IsVisible = true;
-        PasswordIncorrect.IsVisible = true;
+        PasswordIncorrect.IsVisible = TBox_Password.Text == "" || TBox_Password.Text == null ? true : false;
+        //LoginIncorrect.IsVisible = true;
+        //PasswordIncorrect.IsVisible = true;
     }
 }
