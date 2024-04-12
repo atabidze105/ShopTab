@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using Avalonia.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,32 @@ namespace ShopTab1
         {
             InitializeComponent();
             LBox.ItemsSource = ProdsSttc._LBoxItems.ToList();
+            TBox_Search.AddHandler(TextInputEvent, searching, Avalonia.Interactivity.RoutingStrategies.Tunnel);
+        }
+
+        void searching(object sender, TextInputEventArgs e) //Метод для поиска товаров по имени
+        {
+            if (TBox_Search.Text != null || TBox_Search.Text != "")
+            {
+                ProdsSttc._LBoxItems.Clear();
+                foreach (Product product in ProdsSttc._LBoxItems)
+                {
+                    if (product.Name.Contains(TBox_Search.Text))
+                    {
+                        ProdsSttc._FoundProducts.Add(product);
+                    }
+                }
+                LBox.ItemsSource = ProdsSttc._FoundProducts.ToList();
+            }
+            else
+            {
+                LBox.ItemsSource = ProdsSttc._LBoxItems.ToList();
+            }
         }
 
         private void AddItem(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            RedWindow redWindow = new RedWindow(-1);
+            RedWindow redWindow = new RedWindow();
 
             redWindow.Show();
             this.Close();
@@ -40,7 +62,8 @@ namespace ShopTab1
                     break;
                 case "btn_red":
                     {
-                        RedWindow redWindow = new RedWindow((int)(sender as Button)!.Tag!);
+                        ProdsSttc._redProduct = ProdsSttc._LBoxItems.ElementAt((int)(sender as Button)!.Tag!);
+                        RedWindow redWindow = new RedWindow();
 
                         redWindow.Show();
                         this.Close();

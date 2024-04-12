@@ -9,18 +9,43 @@
 		x:CompileBindings="False">
 	<Grid
 		ColumnDefinitions="*,*,*"
-		RowDefinitions="*,*,*">
-		<StackPanel
-			Grid.Column="1" Grid.Row="0"
-			Orientation="Vertical">
-			<Button
-				Name="btn_add"
-				Content="Добавить товар"
-				Click="AddItem"
-				HorizontalAlignment="Center"/>
-		</StackPanel>
+		RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*">
+		<Border
+			Grid.Column="0"
+			Grid.ColumnSpan="3"
+			Grid.RowSpan="2"
+			Background="LightGray">
+			<Grid
+				ColumnDefinitions="*,*,*">
+				<StackPanel
+					Orientation="Vertical"
+					Grid.ColumnSpan="2"
+					Width="800">
+					<TextBlock
+					Text="Найти товар:"
+					FontSize="30" Margin="15"/>
+					<TextBox
+						Name="TBox_Search"
+						Grid.ColumnSpan="2"
+						HorizontalAlignment="Center"
+						VerticalAlignment="Center"
+						VerticalContentAlignment="Center"
+						Width="800" Height="50"
+						FontSize="22"/>
+				</StackPanel>
+				
+				<Button
+					Name="btn_add"
+					Grid.Column="2"
+					Content="Добавить товар"
+					FontSize="30"
+					Click="AddItem"
+					HorizontalAlignment="Center"/>
+			</Grid>
+		</Border>
 		<StackPanel
 			Grid.ColumnSpan="3"
+			Grid.Row="2"
 			VerticalAlignment="Bottom">
 			<Grid
 				ColumnDefinitions="*,*,*">
@@ -31,9 +56,9 @@
 		</StackPanel>
 		<ListBox
 			Name="LBox"
-			Grid.Row="1"
+			Grid.Row="3"
 			Grid.ColumnSpan="3"
-			Grid.RowSpan="2">
+			Grid.RowSpan="10">
 			<ListBox.ItemTemplate>
 				<DataTemplate>
 					<Border

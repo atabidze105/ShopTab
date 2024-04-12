@@ -6,55 +6,67 @@
 	mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1000"
 	WindowState="Maximized"
 	x:Class="ShopTab1.RedWindow"
-	Title="RedWindow">
+	Title="RedWindow"
+	Background="LightGray">
 	<Grid
-		ColumnDefinitions="*,*"
-		RowDefinitions="*,*,*">
-		<TextBlock
-			Text="Меню редактирования товара"
-			VerticalAlignment="Top" HorizontalAlignment="Center"
-			Grid.ColumnSpan="2"
-			 FontWeight="Bold" FontSize="20"/>
-		<TextBlock
-			Text="Название товара" FontWeight="Bold"
-			Margin="17"
-			VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-		<TextBox
-			Name="TBox_Name"
+		ColumnDefinitions="*,*,*"
+		RowDefinitions="*,*,*,*">
+		<Border
 			Grid.Column="1"
-			Height="30" Width="220"
-			VerticalAlignment="Bottom"
-			Margin="10"/>
-		<TextBlock
-			Text="Количество" FontWeight="Bold"
-			Grid.Row="1"
-			Margin="20"
-			VerticalAlignment="Center" HorizontalAlignment="Center"/>
-		<TextBox
-			Name="NUD_Count"
-			Height="30"
-			Grid.Row="1" Grid.Column="2"/>
-		<TextBlock
-			Text="Цена" FontWeight="Bold"
-			Grid.Row="2"
-			Margin="20"
-			VerticalAlignment="Top" HorizontalAlignment="Center"/>
-		<TextBox
-			Name="NUD_Price"
-			Height="30"
-			Grid.Row="2" Grid.Column="2"
-			VerticalAlignment="Top" HorizontalAlignment="Center"/>
-		<Button
-			Name="btn_Cancel"
-			Click="AddItem"
-			Grid.Row="2"
-			VerticalAlignment="Bottom" HorizontalAlignment="Center"
-			Content="Отмена"/>
-		<Button
-			Name="btn_Add"
-			Click="AddItem"
-			Grid.Column="2" Grid.Row="2"
-			VerticalAlignment="Bottom" HorizontalAlignment="Center"
-			Content="Добавить"/>
+			Grid.Row="1" Grid.RowSpan="2"
+			Background="White"
+			CornerRadius="15">
+			<Grid
+				RowDefinitions="*,*,*"
+				ColumnDefinitions="*,*">
+				<TextBlock
+					Text="Меню редактирования товара"
+					VerticalAlignment="Top" HorizontalAlignment="Center"
+					Grid.ColumnSpan="2" Margin="20"
+					FontWeight="Bold" FontSize="20"/>
+				<TextBlock
+					Text="Название товара" FontWeight="Bold"
+					Margin="17"
+					VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+				<TextBox
+					Name="TBox_Name"
+					Grid.Column="1"
+					Height="30"
+					VerticalAlignment="Bottom"
+					HorizontalAlignment="Center"
+					Margin="10"/>
+				<TextBlock
+					Text="Количество" FontWeight="Bold"
+					Grid.Row="1"
+					Margin="20"
+					VerticalAlignment="Center" HorizontalAlignment="Center"/>
+				<TextBox
+					Name="NUD_Count"
+					Height="30"
+					VerticalAlignment="Center" HorizontalAlignment="Center"
+					Grid.Row="1" Grid.Column="2"/>
+				<TextBlock
+					Text="Цена" FontWeight="Bold"
+					Grid.Row="2"
+					Margin="20"
+					VerticalAlignment="Top" HorizontalAlignment="Center"/>
+				<TextBox
+					Name="NUD_Price"
+					Height="30" 
+					Grid.Row="2" Grid.Column="2"
+					VerticalAlignment="Top" HorizontalAlignment="Center"/>
+				<Button
+					Name="btn_Cancel"
+					Click="AddItem"
+					Grid.Row="2" Margin="20"
+					VerticalAlignment="Bottom" HorizontalAlignment="Center"
+					Content="Отмена"/>
+				<Button
+					Name="btn_Add"
+					Click="AddItem" Margin="20"
+					Grid.Column="2" Grid.Row="2"
+					VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+			</Grid>
+		</Border>	
 	</Grid>
 </Window>
