@@ -13,14 +13,18 @@ namespace ShopTab1
         {
             InitializeComponent();
             LBox.ItemsSource = ProdsSttc._LBoxItems.ToList();
-            TBox_Search.AddHandler(TextInputEvent, searching, Avalonia.Interactivity.RoutingStrategies.Tunnel);
         }
 
-        void searching(object sender, TextInputEventArgs e) //Метод для поиска товаров по имени
+        private void SearchingEvent(object? sender, Avalonia.Input.KeyEventArgs e)
         {
-            if (TBox_Search.Text != null || TBox_Search.Text != "")
+            searching();
+        }
+
+        void searching()
+        {
+            if (TBox_Search.Text != null || TBox_Search.Text == "")
             {
-                ProdsSttc._LBoxItems.Clear();
+                ProdsSttc._FoundProducts.Clear();
                 foreach (Product product in ProdsSttc._LBoxItems)
                 {
                     if (product.Name.Contains(TBox_Search.Text))
