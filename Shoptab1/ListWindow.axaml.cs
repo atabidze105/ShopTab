@@ -12,7 +12,16 @@ namespace ShopTab1
         public ListWindow()
         {
             InitializeComponent();
-            LBox.ItemsSource = ProdsSttc._LBoxItems.ToList();
+            LBox.ItemsSource = ProdsSttc._LBoxItems.Select(x => new
+            {
+                x.Name,
+                x.Price,
+                x.Quantity,
+                x.Id,
+                IsAdmin = ProdsSttc._PresentUser.Admin
+            });
+
+            btn_add.Content = ProdsSttc._PresentUser.Admin == true ? "Добавить товар" : "Перейти в корзину";
         }
 
         private void SearchingEvent(object? sender, Avalonia.Input.KeyEventArgs e)
@@ -42,10 +51,17 @@ namespace ShopTab1
 
         private void AddItem(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            RedWindow redWindow = new RedWindow();
+            if (ProdsSttc._PresentUser.Admin == true)
+            {
+                RedWindow redWindow = new RedWindow();
 
-            redWindow.Show();
-            this.Close();
+                redWindow.Show();
+                this.Close();
+            }
+            else
+            {
+
+            }
         }
 
         private void ItemManipulation(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -74,6 +90,15 @@ namespace ShopTab1
                     }
                     break;
             }
+        }
+
+        private void LogOut(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            ProdsSttc._PresentUser = null;
+            MainWindow mainWindow = new();
+
+            mainWindow.Show();
+            this.Close();
         }
     }
 }

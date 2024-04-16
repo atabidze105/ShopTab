@@ -42,6 +42,7 @@
 					VerticalAlignment="Center" HorizontalAlignment="Center"/>
 				<TextBox
 					Name="NUD_Count"
+					KeyUp="numbersCheck"
 					Height="30"
 					VerticalAlignment="Center" HorizontalAlignment="Center"
 					Grid.Row="1" Grid.Column="2"/>
@@ -51,7 +52,8 @@
 					Margin="20"
 					VerticalAlignment="Top" HorizontalAlignment="Center"/>
 				<TextBox
-					Name="NUD_Price"
+					Name="NUD_Price"					
+					KeyUp="numbersCheck"
 					Height="30" 
 					Grid.Row="2" Grid.Column="2"
 					VerticalAlignment="Top" HorizontalAlignment="Center"/>

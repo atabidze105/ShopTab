@@ -10,6 +10,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        ProdsSttc._PresentUser = null;
     }
 
     private void LogIn(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -24,6 +25,7 @@ public partial class MainWindow : Window
                 {
                     if (TBox_Password.Text == user.Password)
                     {
+                        ProdsSttc._PresentUser = user;
                         ListWindow listWindow = new();
                         listWindow.Show();
                         this.Close();

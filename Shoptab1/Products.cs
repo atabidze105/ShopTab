@@ -78,9 +78,10 @@ namespace ShopTab1
 
     static class ProdsSttc
     {
-        public static List<Product> _LBoxItems = new();
+        public static List<Product> _LBoxItems = [new Product("помидор", 15, 2, 0), new Product("покрыжка", 2, 12, 1), new Product("приветки", 34, 3, 2), new Product("огурей", 96, 45, 3)];
         public static List<User> _Users = [new User("admin","admin", true), new User("user", "user", false)];
         public static List<Product> _FoundProducts = new();
         public static Product _redProduct = null;
+        public static User _PresentUser = null;
     }
 }

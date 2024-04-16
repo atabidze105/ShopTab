@@ -56,4 +56,18 @@ public partial class RedWindow : Window
             this.Close();
         }
     }
+
+    private void numbersCheck(object? sender, Avalonia.Input.KeyEventArgs e)
+    {
+        try
+        {
+            var textbox = sender as TextBox;
+            textbox.Text = textbox.Text.EndsWith("1") || textbox.Text.EndsWith("2") || textbox.Text.EndsWith("3") ||
+                textbox.Text.EndsWith("4") || textbox.Text.EndsWith("5") || textbox.Text.EndsWith("6") || textbox.Text.EndsWith("7") ||
+                textbox.Text.EndsWith("8") || textbox.Text.EndsWith("9") || textbox.Text.EndsWith("0") ?
+                textbox.Text : textbox.Text.Remove(textbox.Text.Length - 1, 1);
+        }
+        catch
+        {}
+    }
 }

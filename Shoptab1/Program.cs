@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using System;
 
-namespace Shoptab1
+namespace ShopTab1
 {
     internal class Program
     {

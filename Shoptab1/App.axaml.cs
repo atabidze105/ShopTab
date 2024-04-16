@@ -1,9 +1,8 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using ShopTab1;
 
-namespace Shoptab1
+namespace ShopTab1
 {
     public partial class App : Application
     {
